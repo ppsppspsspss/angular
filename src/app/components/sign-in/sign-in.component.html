@@ -1,0 +1,42 @@
+<form [formGroup]="signInForm" (ngSubmit)="handleSubmit()">
+    <table>
+        <tr>
+            <td>
+                Sign In
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Username: 
+            <br>
+                <input type="text" formControlName="username">
+                <div *ngIf="Username.errors?.['required'] && ( Username.touched || Username.dirty )">
+                    Username Empty
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Password: 
+            <br>
+                <input type="password" formControlName="password">
+                <div *ngIf="Password.errors?.['required'] && ( Password.touched || Password.dirty )">
+                    Password Empty
+                </div>
+                <div *ngIf="status">
+                    Invalid Login Credentials
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" [disabled]="signInForm.invalid" value="Submit">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Dont have an account? <a routerLink="/sign-up">Sign Up now!</a>
+            </td>
+        </tr>
+    </table>
+</form>
