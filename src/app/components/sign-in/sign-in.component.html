@@ -1,42 +1,23 @@
-<form [formGroup]="signInForm" (ngSubmit)="handleSubmit()">
-    <table>
-        <tr>
-            <td>
-                Sign In
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Username: 
-            <br>
-                <input type="text" formControlName="username">
-                <div *ngIf="Username.errors?.['required'] && ( Username.touched || Username.dirty )">
-                    Username Empty
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Password: 
-            <br>
-                <input type="password" formControlName="password">
-                <div *ngIf="Password.errors?.['required'] && ( Password.touched || Password.dirty )">
-                    Password Empty
-                </div>
-                <div *ngIf="status">
-                    Invalid Login Credentials
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" [disabled]="signInForm.invalid" value="Submit">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Dont have an account? <a routerLink="/sign-up">Sign Up now!</a>
-            </td>
-        </tr>
-    </table>
-</form>
+<body>
+    <div class="sign-in">
+        <div class="logo"><img src="../../../assets/aiub_logo_92x92.png" alt="aiub_logo_92x92" width="350px"></div>
+        <span class="invalid-login" *ngIf="status">
+            Invalid username or password.
+            <br><br><br>
+            Make sure you typed the user ID assigned to you by your organization. It usually looks like XX-XXXXX-X or XXXX-XXX-X. And check to make sure you typed the correct password.
+        </span>
+        <div class="label">Sign in with your organizational id number.</div>
+        <form [formGroup]="signInForm" (ngSubmit)="handleSubmit()">
+            <div class="username"><input type="text" formControlName="userID" pInputText placeholder="Usename" /></div>
+            <div class="username-error" *ngIf="UserID.errors?.['required'] && ( UserID.touched || UserID.dirty )">
+                The username field is required
+            </div>
+            <div class="password"><input type="password" formControlName="password" pInputText placeholder="Password" /></div>
+            <div class="password-error" *ngIf="Password.errors?.['required'] && ( Password.touched || Password.dirty )">
+                The password field is required
+            </div>
+            <div class="button"><button pButton type="submit" [disabled]="signInForm.invalid" label="Log In" ></button></div>
+        </form>
+        <div class="forgot-password"><a href="">Can't access your account?</a></div>
+    </div>
+</body>

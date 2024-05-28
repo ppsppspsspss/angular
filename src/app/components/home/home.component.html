@@ -1,21 +1,11 @@
-<img src="/{{profilePicture}}" alt="profilePicture" width="50px"> {{username}} | <a (click)="logOut()">Logout</a>
-<div>
-    <form [formGroup]="postForm" (ngSubmit)="handleSubmit()">
-        <textarea cols="50" rows="5" formControlName="post"></textarea>
-        <div *ngIf="status">
-            Failed to Post
+<div class="home">
+    <app-navbar-header></app-navbar-header>
+    <div class="container">
+        <div class="sidebar">
+            <app-control-panel></app-control-panel>
         </div>
-        <div>
-            <input type="submit" [disabled]="postForm.invalid" value="Post">
+        <div class="main-content">
+            <router-outlet></router-outlet>
         </div>
-    </form>
-</div>
-<div *ngIf="postStatus">
-    No Posts Available
-</div>
-<div *ngFor="let post of posts">
-   <div>
-    {{post.postContent}} | {{post.likes}} | {{post.timestamp}}
-    <div *ngIf="post.userID == userID"><button>Edit</button><button (click)="deletePost(post.postID)"> Delete </button></div>
-   </div>
+    </div>
 </div>

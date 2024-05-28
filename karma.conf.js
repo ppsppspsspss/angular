@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/social-media'),
+      dir: require('path').join(__dirname, './coverage/aiub-portal'),
       subdir: '.',
       reporters: [
         { type: 'html' },

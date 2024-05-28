@@ -1,0 +1,23 @@
+.home{
+    margin-top: 25px;
+    margin-left: 40px;
+    margin-right: 40px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+  
+.container {
+    margin-top: 25PX;
+    display: flex;
+    flex: 1; 
+}
+  
+.sidebar {
+    width: 300px; 
+    margin-right: 20px;
+}
+  
+.main-content {
+    flex: 1; 
+}

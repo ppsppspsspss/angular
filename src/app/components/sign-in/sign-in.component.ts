@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -18,12 +18,12 @@ export class SignInComponent implements OnInit {
   status = false;
 
   signInForm = new FormGroup({
-    username: new FormControl("", [Validators.required]),
+    userID: new FormControl("", [Validators.required]),
     password: new FormControl("", [Validators.required])
   })
 
-  get Username(){
-    return this.signInForm.get("username") as FormControl
+  get UserID(){
+    return this.signInForm.get("userID") as FormControl
   }
 
   get Password(){
@@ -31,7 +31,13 @@ export class SignInComponent implements OnInit {
   }
 
   handleSubmit(){
-    this.authService.signIn(this.signInForm.value).subscribe(
+
+    const user = {
+      userID: Number.parseInt(this.signInForm.value.userID),
+      password: this.signInForm.value.password
+    }
+
+    this.authService.signIn(user).subscribe(
       (res) => {
         this.authService.setToken(res);
         this.status = false;
@@ -43,4 +49,5 @@ export class SignInComponent implements OnInit {
       }
     )
   }
+
 }

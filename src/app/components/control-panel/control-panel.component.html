@@ -1,0 +1,7 @@
+<div class="control-panel">
+  <div class="dropdown-header" (click)="toggleAcademicsDropdown()">Academics</div>
+  <div class="dropdown" [ngClass]="{ 'open': academicsDropdownState === 'open' }">
+      <button>Courses & Results</button>
+      <button>Registration</button>
+  </div>
+</div>

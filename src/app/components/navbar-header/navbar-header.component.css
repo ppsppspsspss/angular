@@ -1,0 +1,39 @@
+.navbar-header{
+    border: 2px solid #1E88E5;
+    width: max;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.controls{
+    font: medium sans-serif;
+    color: #1E88E5;
+    display: flex;
+    align-items: center;
+}
+
+.logo-container{
+    display: flex;
+    font: medium sans-serif;
+    color: #1E88E5;
+    align-items: center;
+}
+
+.logo-container span{
+    margin-left: 30px;
+}
+
+.controls span{
+    margin-right: 30px;
+}
+
+span:hover{
+    color: #5E6969;
+}
+
+span img:hover {
+    filter: brightness(80%) grayscale(100%);
+    cursor: pointer; 
+}
