@@ -11,11 +11,9 @@ export class AuthService {
 
   currentUser: BehaviorSubject<any> = new BehaviorSubject(null);
 
-  constructor(private http: HttpClient, private router: Router) { this.loadCurrentUser();
+  constructor(private http: HttpClient, private router: Router) { this.loadCurrentUser(); }
 
-   }
-
-  baseUrl = "http://localhost:5062/api/auth/"
+  baseUrl = "http://localhost:5171/api/auth"
 
   jwtHelperService = new JwtHelperService();
 
@@ -43,15 +41,14 @@ export class AuthService {
       phone: userInfo.phone,
       email: userInfo.email,
       password: userInfo.password,
-      role: userInfo.role,
-      profilePicture: userInfo.profilePicture
+      role: userInfo.role
     } : null;
     this.currentUser.next(data);
   }
 
   logOut(){
     localStorage.removeItem("access-token");
-    this.router.navigateByUrl('/sign-in');
+    this.router.navigateByUrl('/career');
   }
 
 }

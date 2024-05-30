@@ -1,0 +1,34 @@
+.application-form{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #dddddd;
+    width: 700px;
+    padding: 40px;
+}
+
+.name{
+    display: flex;
+    justify-content: space-between;
+}
+
+.firstname{
+    align-items: left;
+    margin-right: 5px;
+}
+
+.lastname{
+    align-items: right;
+    margin-left: 5px;
+}
+
+.input{
+    border-radius: 0px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.label{
+    font: small sans-serif;
+}

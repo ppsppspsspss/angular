@@ -1,35 +1,34 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { AuthGuard } from './guards/auth.guard';
-import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { HomeComponent } from './components/home/home.component';
+import { CareerComponent } from './components/career/career.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { ApplicationFormComponent } from './components/application-form/application-form.component';
 
 const routes: Routes = [
   {
-      path: 'sign-in',
-      component: SignInComponent
+      path: '',
+      component: CareerComponent
   },
   {
       path: 'home',
       component: HomeComponent,
-      children: [
-        { path: 'profile', component: ProfileComponent },
-      ],
-      canActivate: [AuthGuard]
+      //canActivate: [AuthGuard]
+  },
+  { 
+      path: 'application-form/:jobID', 
+      component: ApplicationFormComponent 
   },
   {
-      path: '',
-      redirectTo: 'sign-in',
-      pathMatch: 'full'
+      path: 'sign-in',
+      component: SignInComponent
   },
   {
       path: '**',
       component: PageNotFoundComponent
   }
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
