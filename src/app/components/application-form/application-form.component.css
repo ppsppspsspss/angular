@@ -1,8 +1,5 @@
 .application-form{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     border: 1px solid #dddddd;
     width: 700px;
     padding: 40px;
@@ -11,24 +8,35 @@
 .name{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 25px;
 }
 
 .firstname{
+    width: 100%;
     align-items: left;
-    margin-right: 5px;
+    margin-right: 20px;
 }
 
 .lastname{
+    width: 100%;
     align-items: right;
-    margin-left: 5px;
+    margin-left: 20px;
 }
 
 .input{
     border-radius: 0px;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .label{
     font: small sans-serif;
+}
+
+.fathers-name, .mothers-name, .phone, .email, .current-address, .permanent-address, .msc, .bsc, .university, .cgpa, .aiub-id, .skills{
+    margin-bottom: 25px;
+}
+
+.button{
+    margin-top: 15px;
 }

@@ -12,6 +12,12 @@ export class JobService {
 
   baseUrl = "http://localhost:5171/api/job"
 
+  jobApplication(jobApplication: any): Observable<string> {
+    return this.http.post<string>(this.baseUrl + "/job-application", jobApplication, {
+      responseType: 'text' as 'json'
+    });
+  }
+  
   getAllJobs(): Observable<Job[]>{
     return this.http.get<Job[]>(this.baseUrl + "/get-all-jobs", {
       headers: {

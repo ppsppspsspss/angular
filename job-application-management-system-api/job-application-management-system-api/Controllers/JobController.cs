@@ -1,49 +1,63 @@
-﻿using job_application_management_system_api.Repositories.IServices;
+﻿using job_application_management_system_api.Models.DTOs;
+using job_application_management_system_api.Repositories.IServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
-namespace job_application_management_system_api.Controllers
+[ApiController]
+[Route("api/job")]
+[EnableCors("AllowSpecificOrigins")]
+public class JobController : ControllerBase
 {
-    [Route("api/job")]
-    [ApiController]
-    [EnableCors("AllowSpecificOrigins")]
-    public class JobController : ControllerBase
+    private readonly IJobService _jobService;
+
+    public JobController(IJobService jobService)
     {
-        private readonly IJobService _jobService;
-        public JobController(IJobService jobService)
-        {
-            _jobService = jobService;
-        }
+        _jobService = jobService;
+    }
 
-        [AllowAnonymous]
-        [HttpGet("get-all-jobs")]
-        public ActionResult GetAllJobs()
+    [AllowAnonymous]
+    [HttpPost("job-application")]
+    public ActionResult JobApplication([FromBody] JobApplicationDTO jobApplicationDTO)
+    {
+        try
         {
-            try
-            {
-                var jobs = _jobService.GetAllJobs();
-                return Ok(jobs);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            _jobService.JobApplication(jobApplicationDTO);
+            return Ok();
         }
-
-        [AllowAnonymous]
-        [HttpGet("get-job/{jobID}")]
-        public ActionResult GetJob(int jobID)
+        catch (Exception ex)
         {
-            try
-            {
-                var job = _jobService.GetJob(jobID);
-                return Ok(job);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return BadRequest(new { message = ex.Message });
+        }
+    }
+
+    [AllowAnonymous]
+    [HttpGet("get-all-jobs")]
+    public ActionResult GetAllJobs()
+    {
+        try
+        {
+            var jobs = _jobService.GetAllJobs();
+            return Ok(jobs);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
+
+    [AllowAnonymous]
+    [HttpGet("get-job/{jobID}")]
+    public ActionResult GetJob(int jobID)
+    {
+        try
+        {
+            var job = _jobService.GetJob(jobID);
+            return Ok(job);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { message = ex.Message });
         }
     }
 }

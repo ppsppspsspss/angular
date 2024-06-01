@@ -6,11 +6,17 @@ import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CheckboxModule } from 'primeng/checkbox';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { CalendarModule } from 'primeng/calendar';
+import { ChipsModule } from 'primeng/chips';
+import { FileUploadModule } from 'primeng/fileupload';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { CareerComponent } from './components/career/career.component';
@@ -36,7 +42,14 @@ import { ApplicationFormComponent } from './components/application-form/applicat
     CardModule,
     DialogModule,
     BrowserAnimationsModule,
-    InputTextModule
+    InputTextModule,
+    InputTextareaModule,
+    CheckboxModule,
+    ToggleButtonModule,
+    FormsModule,
+    CalendarModule,
+    ChipsModule,
+    FileUploadModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

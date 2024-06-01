@@ -1,13 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace job_application_management_system_api.Models
+namespace job_application_management_system_api.Models.DTOs
 {
-    public class JobApplication
+    public class JobApplicationDTO
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int jobApplicationID { get; set; }
         public int jobID { get; set; }
         public string? firstName { get; set; }
         public string? lastName { get; set; }
@@ -34,6 +30,5 @@ namespace job_application_management_system_api.Models
         public string? mscGraduate { get; set; }
         public string? mscGraduationDate { get; set; }
         public string? cv { get; set; }
-
     }
 }

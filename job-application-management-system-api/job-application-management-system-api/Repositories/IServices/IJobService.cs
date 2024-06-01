@@ -1,4 +1,5 @@
 ﻿using job_application_management_system_api.Models;
+using job_application_management_system_api.Models.DTOs;
 
 namespace job_application_management_system_api.Repositories.IServices
 {
@@ -6,5 +7,6 @@ namespace job_application_management_system_api.Repositories.IServices
     {
         List<Job> GetAllJobs();
         Job GetJob(int jobID);
+        string JobApplication(JobApplicationDTO jobApplicationDTO);
     }
 }

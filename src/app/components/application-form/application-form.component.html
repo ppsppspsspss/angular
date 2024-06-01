@@ -1,15 +1,146 @@
 <div class="application-form">
-
     <div class="name">
-        <div class="firstname">
-            <span class="label">First Name</span>
-            <input type="text" placeholder="e.g. Rianul" pInputText class="input" />
-        </div>
-        <div class="lastname">
-            <span class="label">Last Name</span>
-            <input type="text" placeholder="e.g. Amin" pInputText class="input" />
-        </div>
-        
+      <div class="firstname">
+        <span class="label">First Name</span>
+        <input type="text" placeholder="e.g. Rianul" pInputText class="input" [(ngModel)]="firstName" />
+      </div>
+      <div class="lastname">
+        <span class="label">Last Name</span>
+        <input type="text" placeholder="e.g. Amin" pInputText class="input" [(ngModel)]="lastName" />
+      </div>
     </div>
-    
+    <div class="fathers-name">
+      <span class="label">Father's Name</span>
+      <input type="text" placeholder="e.g. Ruhul Amin" pInputText class="input" [(ngModel)]="fathersName" />
+    </div>
+    <div class="mothers-name">
+      <span class="label">Mother's Name</span>
+      <input type="text" placeholder="e.g. Hena Akter" pInputText class="input" [(ngModel)]="mothersName" />
+    </div>
+    <div class="phone">
+      <span class="label">Phone</span>
+      <input type="text" placeholder="e.g. 01402246680" pInputText class="input" [(ngModel)]="phone" />
+    </div>
+    <div class="email">
+      <span class="label">Email</span>
+      <input type="text" placeholder="e.g. rianulamin.r@gmail.com" pInputText class="input" [(ngModel)]="email" />
+    </div>
+    <div class="current-address">
+      <span class="label">Current Address</span>
+      <textarea rows="5" cols="81" placeholder="e.g. 290/1 A Khilgaon Railgate, Dhaka 1219." pInputTextarea [autoResize]="true" class="input" [(ngModel)]="currentAddress"></textarea>
+    </div>
+    <div class="permanent-address" style="margin-bottom: 35px;">
+      <span class="label">Permanent Address</span>
+      <textarea rows="5" cols="81" placeholder="e.g. 290/1 A Khilgaon Railgate, Dhaka 1219." pInputTextarea [autoResize]="true" class="input" [(ngModel)]="permanentAddress"></textarea>
+      <div style="margin-top: 15px;">
+        <p-checkbox [(ngModel)]="sameAsCurrentAddress" [binary]="true" inputId="binary" ></p-checkbox> <span class="label" style="margin-left: 15px;">Same as the current address</span>
+      </div>
+      
+    </div>
+    <div class="bsc">
+      <span class="label">Did you do your BSC?</span>
+      <div class="button">
+        <p-toggleButton onLabel="Yes" offLabel="No" [(ngModel)]="bsc" [style]="{ width: '100%'}"></p-toggleButton>
+      </div>
+      <div class="bsc-status" *ngIf="bsc" style="margin-top: 15px;">
+        <span class="label">Admission Date</span>
+        <div style="margin-top: 15px; margin-bottom: 15px;">
+          <p-calendar [(ngModel)]="bscAdmissionDate" dateFormat="dd.mm.yy" [showIcon]="true" [style]="{ width: '100%'}"></p-calendar>
+        </div>
+        <span class="label">Are you a student of AIUB?</span>
+        <div class="button" style="margin-bottom: 15px;">
+          <p-toggleButton onLabel="Yes" offLabel="No" [(ngModel)]="bscAIUB" [style]="{ width: '100%'}"></p-toggleButton>
+        </div>
+        <div class="bsc-info-non-aiub" *ngIf="!bscAIUB">
+          <div class="university">
+            <span class="label">University</span>
+            <input type="text" placeholder="e.g. American International University-Bangladesh" pInputText class="input" [(ngModel)]="universityBsc" />
+          </div>
+          <div class="cgpa">
+            <span class="label">CGPA</span>
+            <input type="text" placeholder="e.g. 3.84" pInputText class="input" [(ngModel)]="cgpaBsc" />
+          </div>
+        </div>
+        <div class="bsc-info-aiub" *ngIf="bscAIUB">
+          <div class="aiub-id">
+            <span class="label">AIUB ID</span>
+            <input type="text" placeholder="e.g. 21-44589-1" pInputText class="input" [(ngModel)]="aiubIdBsc" />
+          </div>
+        </div>
+        <span class="label">Did you graduate?</span>
+        <div class="button">
+          <p-toggleButton onLabel="Yes" offLabel="No" [(ngModel)]="bscGraduate" [style]="{ width: '100%'}"></p-toggleButton>
+        </div>
+        <div class="bsc-graduate" *ngIf="bscGraduate" style="margin-top: 15px;">
+          <span class="label">Graduation Date</span>
+          <div style="margin-top: 15px; margin-bottom: 15px;">
+            <p-calendar [(ngModel)]="bscGraduationDate" [showIcon]="true" dateFormat="dd.mm.yy" [style]="{ width: '100%'}"></p-calendar>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="msc">
+      <span class="label">Did you do your MSC?</span>
+      <div class="button">
+        <p-toggleButton onLabel="Yes" offLabel="No" [(ngModel)]="msc" [style]="{ width: '100%'}"></p-toggleButton>
+      </div>
+      <div class="msc-status" *ngIf="msc" style="margin-top: 20px;">
+        <span class="label">Admission Date</span>
+        <div style="margin-top: 15px; margin-bottom: 15px;">
+          <p-calendar [(ngModel)]="mscAdmissionDate" [showIcon]="true" dateFormat="dd.mm.yy" [style]="{ width: '100%'}"></p-calendar>
+        </div>
+        <span class="label">Are you a student of AIUB?</span>
+        <div class="button" style="margin-bottom: 15px;">
+          <p-toggleButton onLabel="Yes" offLabel="No" [(ngModel)]="mscAIUB" [style]="{ width: '100%'}"></p-toggleButton>
+        </div>
+        <div class="msc-info-non-aiub" *ngIf="!mscAIUB">
+          <div class="university">
+            <span class="label">University</span>
+            <input type="text" placeholder="e.g. American International University-Bangladesh" pInputText class="input" [(ngModel)]="universityMsc" />
+          </div>
+          <div class="cgpa">
+            <span class="label">CGPA</span>
+            <input type="text" placeholder="e.g. 3.84" pInputText class="input" [(ngModel)]="cgpaMsc" />
+          </div>
+        </div>
+        <div class="msc-info-aiub" *ngIf="mscAIUB">
+          <div class="aiub-id">
+            <span class="label">AIUB ID</span>
+            <input type="text" placeholder="e.g. 21-44589-1" pInputText class="input" [(ngModel)]="aiubIdMsc" />
+          </div>
+        </div>
+        <span class="label">Did you graduate?</span>
+        <div class="button">
+          <p-toggleButton onLabel="Yes" offLabel="No" [(ngModel)]="mscGraduate" [style]="{ width: '100%'}"></p-toggleButton>
+        </div>
+        <div class="msc-graduate" *ngIf="mscGraduate" style="margin-top: 15px;">
+          <span class="label">Graduation Date</span>
+          <div style="margin-top: 15px; margin-bottom: 15px;">
+            <p-calendar [(ngModel)]="mscGraduationDate" dateFormat="dd.mm.yy" [showIcon]="true" [style]="{ width: '100%'}"></p-calendar>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="name" style="margin-top: 15px;">
+      <div class="skills" style="width: 100%;">
+        <span class="label">Skills</span>
+        <div class="skills-textbox" style="margin-top: 15px; margin-bottom: 15px;">
+          <p-chips [(ngModel)]="skills" separator="," placeholder="e.g. .NET, Angular JS..." [style]="{width: '100%'}"></p-chips>
+        </div>
+      </div>
+      <div class="lastname">
+        <span class="label">Upload Your CV</span>
+        <div class="cv" style="margin-top: 15px; margin-bottom: 15px;">
+          <p-fileUpload mode="basic" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" [auto]="true" chooseLabel="Browse" [style]="{width: '100%'}"></p-fileUpload>
+        </div>
+      </div>
+    </div>
+    <div class="buttons">
+        <div style="margin-bottom: 20px;">
+            <p-button label="Submit" styleClass="p-button-raised" [style]="{width: '100%'}" (onClick)="onSubmit()"></p-button>
+        </div>
+        <div>
+            <p-button label="Cancel" styleClass="p-button-raised p-button-danger" [style]="{width: '100%'}"></p-button>
+        </div>
+    </div>
 </div>

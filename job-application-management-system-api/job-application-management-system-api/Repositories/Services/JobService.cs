@@ -1,10 +1,7 @@
 ﻿using job_application_management_system_api.Models;
 using job_application_management_system_api.Repositories.IServices;
 using SocialMedia.API.Data;
-using Microsoft.EntityFrameworkCore; // Add this import for DbSet<T>
-using Microsoft.Extensions.Configuration; // Add this import for IConfiguration
-using System; // Add this import for Exception
-using System.Collections.Generic; // Add this import for List<T>
+using job_application_management_system_api.Models.DTOs; // Add this import for List<T>
 
 namespace job_application_management_system_api.Repositories.Services
 {
@@ -17,6 +14,45 @@ namespace job_application_management_system_api.Repositories.Services
         {
             _db = db;
             _configuration = configuration;
+        }
+
+        public string JobApplication(JobApplicationDTO jobApplicationDTO) {
+
+            var _jobApplication = new JobApplication
+            {
+                jobID = jobApplicationDTO.jobID,
+                firstName = jobApplicationDTO.firstName,
+                lastName = jobApplicationDTO.lastName,
+                fathersName = jobApplicationDTO.fathersName,
+                mothersName = jobApplicationDTO.mothersName,
+                phone = jobApplicationDTO.phone,
+                email = jobApplicationDTO.email,
+                currentAddress = jobApplicationDTO.currentAddress,
+                permanentAddress = jobApplicationDTO.permanentAddress,
+                bscStatus = jobApplicationDTO.bscStatus,
+                bscAdmissionDate = jobApplicationDTO.bscAdmissionDate,
+                bscAIUB = jobApplicationDTO.bscAIUB,
+                bscAIUBID = jobApplicationDTO.bscAIUBID,
+                bscUniversity = jobApplicationDTO.bscUniversity,
+                bscCGPA = jobApplicationDTO.bscCGPA,
+                bscGraduate = jobApplicationDTO.bscGraduate,
+                bscGraduationDate = jobApplicationDTO.bscGraduationDate,
+                mscStatus = jobApplicationDTO.mscStatus,
+                mscAdmissionDate = jobApplicationDTO.mscAdmissionDate,
+                mscAIUB = jobApplicationDTO.mscAIUB,
+                mscAIUBID = jobApplicationDTO.mscAIUBID,
+                mscUniversity = jobApplicationDTO.mscUniversity,
+                mscCGPA = jobApplicationDTO.mscCGPA,
+                mscGraduate = jobApplicationDTO.mscGraduate,
+                mscGraduationDate = jobApplicationDTO.mscGraduationDate,
+                cv = jobApplicationDTO.cv
+            };
+
+            _db.JobApplication.Add(_jobApplication);
+            _db.SaveChanges();
+
+            return "Job application submitted successfully.";
+            
         }
 
         public List<Job> GetAllJobs() {
